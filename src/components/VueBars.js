@@ -1,14 +1,17 @@
-import Path from './path'
+import { defineComponent, h } from 'vue'
+import VuePath from './VuePath'
 
-export default {
-  name: 'Bars',
+export default defineComponent({
+  name: 'VueBars',
 
   props: {
     data: {
       type: Array,
       required: true
     },
-    autoDraw: Boolean,
+    autoDraw: {
+      type: Boolean,
+    },
     barWidth: {
       type: Number,
       default: 8
@@ -53,15 +56,19 @@ export default {
       type: Number,
       default: 0.7
     },
-    height: Number,
-    width: Number,
+    height: {
+      type: Number,
+    },
+    width: {
+      type: Number,
+    },
     padding: {
       type: Number,
       default: 8
     }
   },
 
-  render (h) {
+  render () {
     if (!this.data || this.data.length < 2) return
     const { width, height, padding } = this
     const viewWidth = width || 300
@@ -83,23 +90,19 @@ export default {
       labelColor: this.labelColor,
       labelSize: this.labelSize
     }
-    const props = this.$props
 
-    props.boundary = boundary
-    props.id = 'vue-bars-' + this._uid
-    props.labelProps = labelProps
+    const props = Object.assign({
+      id: 'vue-bars-' + this._uid,
+      boundary,
+      labelProps,
+    }, this.$props)
 
     return h('svg', {
-      attrs: {
-        width: width || '100%',
-        height: height || '25%',
-        viewBox: `0 0 ${viewWidth} ${viewHeight}`
-      }
+      width: width || '100%',
+      height: height || '25%',
+      viewBox: `0 0 ${viewWidth} ${viewHeight}`
     }, [
-      h(Path, {
-        props,
-        ref: 'path'
-      })
+      h(VuePath, props)
     ])
   }
-}
+})

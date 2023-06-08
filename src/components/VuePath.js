@@ -1,9 +1,10 @@
+import { defineComponent, h } from 'vue'
 import { genPoints, genBars, genLabels } from '../helpers/path'
 
-export default {
+export default defineComponent({
   props: ['data', 'boundary', 'barWidth', 'rounding', 'id', 'gradient', 'growDuration', 'max', 'min', 'labelData', 'labelProps'],
 
-  render (h) {
+  render () {
     const { data, boundary, max, min, labelData } = this
     const points = genPoints(data, boundary, { max, min }, labelData.length)
     const labels = genLabels(this, points, labelData, h)
@@ -15,10 +16,9 @@ export default {
     return h(
       'g',
       {
-        class: 'container',
-        transform: `translate(0,${this.boundary.maxY})`
+        class: 'container'
       },
       bars
     )
   }
-}
+})

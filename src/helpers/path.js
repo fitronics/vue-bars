@@ -61,25 +61,21 @@ export function genBars (_this, arr, h) {
 
   const rects = arr.map((item, index) => {
     return h('rect', {
-      attrs: {
-        id: `bar-id-${index}`,
-        fill: (gradients ? gradients[index] : (_this.gradient[0] ? _this.gradient[0] : '#000')),
-        x: item.x - offsetX,
-        y: item.y,
-        width: _this.barWidth,
-        height: item.height,
-        rx: _this.rounding,
-        ry: _this.rounding
-      }
+      id: `bar-id-${index}`,
+      fill: (gradients ? gradients[index] : (_this.gradient[0] ? _this.gradient[0] : '#000')),
+      x: item.x - offsetX,
+      y: item.y,
+      width: _this.barWidth,
+      height: item.height,
+      rx: _this.rounding,
+      ry: _this.rounding
     }, [
       h('animate', {
-        attrs: {
-          attributeName: 'height',
-          from: 0,
-          to: item.height,
-          dur: `${_this.growDuration}s`,
-          fill: 'freeze'
-        }
+        attributeName: 'height',
+        from: 0,
+        to: item.height,
+        dur: `${_this.growDuration}s`,
+        fill: 'freeze'
       }),
       h('title', {}, [item.title])
     ])
@@ -102,10 +98,8 @@ export function genLabels (_this, arr, labels, h) {
   const xaxis = h(
     'g',
     {
-      attrs: {
-        class: 'x-axis',
-        transform: `translate(${translateOffsetX},${maxY - 8})`
-      }
+      class: 'x-axis',
+      transform: `translate(${translateOffsetX},${maxY - 8})`
     },
     arr.map((item, index) => {
       const labelOffsetX = labelRotate < 0 ? item.x + offsetX : item.x - offsetX
@@ -113,20 +107,16 @@ export function genLabels (_this, arr, labels, h) {
       return h(
         'g',
         {
-          attrs: {
-            class: 'v-bars--tick',
-            transform: `translate(${labelOffsetX},0) rotate(${labelRotate})`
-          }
+          class: 'v-bars--tick',
+          transform: `translate(${labelOffsetX},0) rotate(${labelRotate})`
         },
         [
           h(
             'text',
             {
-              attrs: {
-                class: 'v-bars--label-text',
-                style: `text-anchor:middle; fill:${labelColor}; font-size:${labelSize}em;`,
-                title: title
-              }
+              class: 'v-bars--label-text',
+              style: `text-anchor:middle; fill:${labelColor}; font-size:${labelSize}em;`,
+              title: title
             },
             [
               title
