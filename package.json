@@ -1,5 +1,5 @@
 {
-  "name": "vue-bars",
+  "name": "@dnewkerk/vue-bars",
   "productionName": "Vue Bars",
   "version": "1.0.0",
   "description": "Simple, elegant spark bars for Vue 3",
@@ -33,6 +33,7 @@
     "type": "git",
     "url": "https://github.com/dnewkerk/vue-bars.git"
   },
+  "homepage": "https://github.com/dnewkerk/vue-bars#readme",
   "license": "MIT",
   "peerDependencies": {
     "vue": "^3.2.47"
