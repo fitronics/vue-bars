@@ -1,5 +1,5 @@
 import { defineComponent as v, h as y } from "vue";
-function $(t, a, e) {
+function w(t, a, e) {
   e = e + 1;
   const r = parseInt(t, 16), o = parseInt(a, 16), n = [], i = (r - o) / e;
   n.push(t);
@@ -9,7 +9,7 @@ function $(t, a, e) {
 }
 function z(t, a, e) {
   e = e || 3;
-  const r = t.slice(0, 2), o = t.slice(2, 4), n = t.slice(4, 6), l = a.slice(0, 2), i = a.slice(2, 4), c = a.slice(4, 6), s = $(r, l, e), d = $(o, i, e), b = $(n, c, e), u = [];
+  const r = t.slice(0, 2), o = t.slice(2, 4), n = t.slice(4, 6), l = a.slice(0, 2), i = a.slice(2, 4), c = a.slice(4, 6), s = w(r, l, e), d = w(o, i, e), b = w(n, c, e), u = [];
   return s.forEach(function(g, p) {
     u.push("" + s[p] + d[p] + b[p]);
   }), u;
@@ -29,11 +29,11 @@ function S(t, { minX: a, minY: e, maxX: r, maxY: o, minBarHeight: n }, { max: l,
   d < 0 && b < 0 ? f = g : d < 0 && b >= 0 ? f = g + u : d >= 0 && b >= 0 && (f = b);
   const m = f !== 0 ? (o - e - x) / f : 1, W = d * m < n ? n : 0, M = d < 0 ? g : 0;
   return s.map((h, N) => {
-    const D = typeof t[N] == "number" ? t[N] : t[N].title, X = Math.abs(h), w = X * m - W > n ? X * m - W : n;
+    const D = typeof t[N] == "number" ? t[N] : t[N].title, X = Math.abs(h), $ = X * m - W > n ? X * m - W : n;
     return {
       x: N * p + a,
-      y: o - w - (h >= 0 || h === 0 && d >= 0 ? M * m : M * m - w) - x - W,
-      height: w,
+      y: o - $ - (h >= 0 || h === 0 && d >= 0 ? M * m : M * m - $) - x - W,
+      height: $,
       title: D
     };
   });
@@ -196,7 +196,7 @@ const R = v({
       labelColor: this.labelColor,
       labelSize: this.labelSize
     }, i = Object.assign({
-      id: "vue-bars-" + this._uid,
+      id: "vue-bars-" + this.$.uid,
       boundary: n,
       labelProps: l
     }, this.$props);

@@ -92,7 +92,7 @@ export default defineComponent({
     }
 
     const props = Object.assign({
-      id: 'vue-bars-' + this._uid,
+      id: 'vue-bars-' + this.$.uid,
       boundary,
       labelProps,
     }, this.$props)
